@@ -132,6 +132,12 @@ extension Inst on GetInterface {
   /// `Get.lazyPut()`, is registered in memory.
   /// - [tag] optional, if you use a [tag] to register the Instance.
   bool isPrepared<S>({String? tag}) => GetInstance().isPrepared<S>(tag: tag);
+  
+  /// Checks if an a Class `Instance<S>` (or [tag]) is registered in memory
+  /// or factory builder `Get.lazyPut()`, is registered in memory.
+  /// - [tag] optional, if you use a [tag] to register the Instance.
+  bool isInjected<S>({String? tag}) => GetInstance().isRegistered<S>(tag: tag) || 
+    GetInstance().isPrepared<S>(tag: tag);
 
   /// Replace a parent instance of a class in dependency management
   /// with a [child] instance
